@@ -187,7 +187,7 @@ void connectToWiFi() {
 }
 
 // Function to send fingerprint ID to the server
-void sendFingerprintDataToServer(int avd_id) {
+void sendFingerprintDataToServer(int sr_no) {
     if (WiFi.status() == WL_CONNECTED) {
         WiFiClient client;
         HTTPClient http;
@@ -199,7 +199,7 @@ void sendFingerprintDataToServer(int avd_id) {
 
         http.begin(client, serverUrl);
         http.addHeader("Content-Type", "application/x-www-form-urlencoded");
-        String postData = "avd_id=" + String(avd_id);
+        String postData = "sr_no=" + String(sr_no);
 
         int httpCode = http.POST(postData);
         if (httpCode > 0) {
